@@ -1,5 +1,7 @@
 # Pixel 7 tools
 
+> A component of [Ferrix](https://github.com/ferrix-os/ferrix), checked out at `tools/vendor/google/pixel7` (its `components.toml`); build and test it from there with `cargo xtask`. Ferrix's [conventions](https://github.com/ferrix-os/ferrix/blob/main/docs/CONVENTIONS.md) apply, including one author per commit.
+
 What runs Ferrix on the Pixel 7 and watches it, from the phone and from the
 PC. None of it is part of Ferrix's own image. Each part builds apart from the
 Cargo workspace and the gates.

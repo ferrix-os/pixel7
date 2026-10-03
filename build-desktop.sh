@@ -63,7 +63,10 @@ for arg in "$@"; do
 done
 [ -e "$out" ] && { echo "$out exists" >&2; exit 1; }
 
-root=$(git rev-parse --show-toplevel)
+# Ferrix's root: this repository is checked out four levels below it
+# (components.toml), so git's own toplevel would be the wrong one.
+root=$(cd "$(dirname "$0")/../../../.." && pwd)
+[ -f "$root/components.toml" ] || { echo "$0: not inside a Ferrix checkout ($root)" >&2; exit 1; }
 export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$HOME/.local/share/ferrix/target-$(basename "$root")}"
 objcopy="$(rustc --print sysroot)/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objcopy"
 
